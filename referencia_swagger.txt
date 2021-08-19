@@ -1,0 +1,49 @@
+How to add swagger to existing node js and express.js project
+
+https://github.com/kirti/node-express-swagger-crud
+
+
+https://levelup.gitconnected.com/how-to-add-swagger-ui-to-existing-node-js-and-express-js-project-2c8bad9364ce
+
+Getting Started
+1. Download the Part 1 source code and open the terminal where you want to save the program
+
+2. Run terminal with below command:
+
+npm install
+npm run start
+
+open browser and run below url
+http://localhost:8000/
+
+3. Now, actual magic will start for swagger:
+Install Dependencies for swagger: 
+
+npm i swagger-ui-express -S
+
+4. Create a new file swagger.json at the root
+
+5. Before we start the coding, please refer to the definition and links to get more understanding of the Swagger API definition.
+Basic Structure
+We will write OpenAPI definitions in JSON. If you are not familiar with the Swagger specification, set of rules that are used to create the Swagger API definition. Kindly follow this link to understand the below definitions. We will guide the basic structure and way to move to create a complex structure.
+Here we will learn the Basic structure and CRUD Routes. You will notice below tags
+
+a) The info the section contains API information: title, description (optional), version:
+
+b) Paths: The paths the section defines individual endpoints (paths) in your API and the HTTP methods
+
+c) Parameters: Operations can have parameters passed via the URL path (/users/{userId}), query string (/users?
+
+d) Request Body: If an operation sends a request body, use the requestBody keyword to describe the body content and media type.
+
+e) Responses: For each operation, you can define possible status codes, such as 200 OK or 404 Not Found, and the response body schema.
+
+6. Open the server.js file and add the below code for swagger integration
+
+const swaggerUi = require(‘swagger-ui-express’),
+swaggerDocument = require(‘./swagger.json’);
+
+Also, add the below code before the app.listen code.
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
